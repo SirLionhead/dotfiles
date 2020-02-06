@@ -1,5 +1,3 @@
-execute pathogen#infect('plugs/{}')
-
 filetype plugin indent on
 set nocompatible                    "Remove vi compatibility
 set expandtab                       "Tabs are spaces
@@ -34,9 +32,6 @@ nnoremap <leader>o mzo<esc>`z
 
 let mapleader=","
 
-" NERDTree Config
-let NERDTreeShowBookmarks=1
-
 inoremap <leader>w <esc>:w
 nnoremap <leader>w <esc>:w
 inoremap <leader>q <esc>:q
@@ -56,12 +51,16 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
+nnoremap <silent> <Space> za
+vnoremap <Space> zf
+
 syntax enable                       "Enable syntax highlighting
-set background=dark
-colorscheme solarized
 
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 set guifont=Courier_New:h10:cDEFAULT
+
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview 
